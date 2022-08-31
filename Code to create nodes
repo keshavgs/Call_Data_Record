@@ -1,0 +1,6 @@
+LOAD CSV WITH HEADERS FROM "file:///cdr1.csv" as cdr
+merge (book:person{contactno:cdr.Calling_Party})
+merge (b:person{contactno:cdr.Called_Party})
+create (book)-[r:called{duration:tointeger(cdr.Call_Duration)}]->(b)
+
+// paste the same code in the neo4j browser query tool and all the nodes will be created.
