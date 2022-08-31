@@ -1,0 +1,8 @@
+match (a)-[r:called]->(b)
+with a, collect(r) as old, b, sum(r.duration) as w, size(collect(r)) as x
+foreach( r in old | delete r)
+with a,w,b,x
+create(a)-[:called{duration:w,nocalls:x}]->(b)
+
+
+// Paste the code given above in the neo4j browser and relationships will be updated.
