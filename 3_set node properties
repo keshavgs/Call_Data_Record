@@ -1,0 +1,6 @@
+load csv with headers from "file:///subs.csv" as cdr2
+match(n:person{contactno:cdr2.MOB_NUM})
+set n.name=cdr2.CUSTOMER_NAME,n.add=cdr2.ADDRESS
+
+// Paste the code in the neo4j browser to set the properties of nodes as per information given in Anikta_Subscriber_Info_for_Analysis.xlx
+// here Anikta_Subscriber_Info_for_Analysis.xlx is renamed as cdr2.csv
